@@ -83,11 +83,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Quad.cpp" />
     <ClCompile Include="src\MilkEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GLLog.h" />
     <ClInclude Include="include\TextFileReader.h" />
+    <ClInclude Include="include\Quad.h" />
+    <ClInclude Include="include\Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include "GLLog.h"
 
+#include "Quad.h"
+
 
 // keep track of window size for things like the viewport and the mouse //cursor
 int g_gl_width = 640;
@@ -55,7 +57,8 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	/*Other stuff goes here next*/
+	/*
+	//Other stuff goes here next
 	float points[] =
 	{
 		0.0f, 0.5f, 0.0f,
@@ -106,6 +109,9 @@ int main()
 	glAttachShader(shaderProgram, vs);
 	//"Link" the shaders together, its like a compile
 	glLinkProgram(shaderProgram);
+	*/
+
+	Quad * tester = new Quad();
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -117,12 +123,16 @@ int main()
 
 		// wipe the drawing surface clean
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	/*	
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
 		//draw points 0-3 from the currently bound VAO with currnet in-use shader
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		// update other events like input handling
 		glfwPollEvents();
+	*/
+		tester->Draw();
+
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);
 
