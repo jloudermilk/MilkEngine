@@ -19,6 +19,7 @@ public:
 
 	GLuint m_ShaderProgram;
 
+
 	void Draw();
 private:
 };
