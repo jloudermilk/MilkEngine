@@ -128,14 +128,16 @@ int main()
 		glBindVertexArray(VAO);
 		//draw points 0-3 from the currently bound VAO with currnet in-use shader
 		glDrawArrays(GL_TRIANGLES, 0, 3);
-		// update other events like input handling
-		glfwPollEvents();
-	*/
+		
+		*/
+		
+	
 		tester->Draw();
 
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);
-
+		// update other events like input handling
+		glfwPollEvents();
 		if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ESCAPE)) {
 			glfwSetWindowShouldClose(window, 1);
 		}
