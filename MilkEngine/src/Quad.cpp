@@ -11,10 +11,11 @@ Quad::Quad()
 		"layout(location = 0) in vec3 position;"
 		"layout(location = 1) in vec4 color;"
 		//"in vec2 texcoord;"
+		"uniform mat4 mvp_matrix;"
 		"out vec4 vColor;"
 		"void main() {"
 		"	vColor = color;"
-		"	gl_Position = vec4 (position, 1.0);"
+		"	gl_Position = mvp_matrix *( vec4 (position, 1.0));"
 		"}";
 
 	const char * FragmentShader =	// Fragment Shaders deals with pixel data
@@ -60,9 +61,9 @@ Quad::Quad()
 
 	GLfloat points[] =
 	{
-		-0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0,
-		0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0,
-		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0,
+		-0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0,
+		0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0,
+		-0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0,
 		0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0
 	};
 
@@ -84,6 +85,11 @@ Quad::Quad()
 	};
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 
+	//make an identity matrix
+	m_ModelView =  glm::mat4(1.0);
+
+	
+
 }
 
 
@@ -97,7 +103,9 @@ void Quad::Draw()
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBindVertexArray(m_VAO);
-
+	glm::mat4 MVP = Ortho * m_ModelView;
+	GLuint mv_location = glGetUniformLocation(m_ShaderProgram, "mvp_matrix");
+	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( MVP));
 	glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 
 }

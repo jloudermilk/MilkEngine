@@ -10,9 +10,7 @@
 #include "Quad.h"
 
 
-// keep track of window size for things like the viewport and the mouse //cursor
-int g_gl_width = 640;
-int g_gl_height = 480;
+
 
 // a call-back function
 void glfw_window_size_callback(GLFWwindow* window, int width, int height);
@@ -32,7 +30,7 @@ int main()
 		return 1;
 	}
 
-	GLFWwindow * window = glfwCreateWindow(640, 480, "Hello Triangle", NULL, NULL);
+	GLFWwindow * window = glfwCreateWindow(g_gl_width,g_gl_height, "Hello Triangle", NULL, NULL);
 
 	if (!window)
 	{
@@ -111,7 +109,12 @@ int main()
 	glLinkProgram(shaderProgram);
 	*/
 
+
 	Quad * tester = new Quad();
+
+	//Ortho = glm::ortho(0, g_gl_width, g_gl_height, 0,-1,1);
+
+	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
 
 	while (!glfwWindowShouldClose(window))
 	{

@@ -4,6 +4,8 @@
 #include "GL/glew.h"
 #include "GLLog.h" //For logging… stuff
 #include "TextFileReader.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include "Utilities.h"
 
 class Quad
@@ -19,6 +21,7 @@ public:
 
 	GLuint m_ShaderProgram;
 
+	glm::mat4 m_ModelView;
 
 	void Draw();
 private:
