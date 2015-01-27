@@ -88,8 +88,9 @@ Quad::Quad()
 	//make an identity matrix
 	m_ModelView =  glm::mat4(1.0);
 
-	
-
+	glm::mat4 viewTranslate = glm::translate(glm::mat4(), glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1));
+	glm::mat4 Model = glm::scale(glm::mat4(), glm::vec3(50,50, 1));
+	m_ModelView = viewTranslate * Model;
 }
 
 

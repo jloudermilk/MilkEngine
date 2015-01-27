@@ -115,7 +115,7 @@ int main()
 	//Ortho = glm::ortho(0, g_gl_width, g_gl_height, 0,-1,1);
 
 	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
-
+	//Ortho = glm::mat4();
 	while (!glfwWindowShouldClose(window))
 	{
 
