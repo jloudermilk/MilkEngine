@@ -86,11 +86,13 @@ Quad::Quad()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 
 	//make an identity matrix
-	m_ModelView =  glm::mat4(1.0);
+	glm::mat4 m_ModelView = glm::mat4(1.0);
 
 	glm::mat4 viewTranslate = glm::translate(glm::mat4(), glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1));
 	glm::mat4 Model = glm::scale(glm::mat4(), glm::vec3(50,50, 1));
 	m_ModelView = viewTranslate * Model;
+	m_MVP = Ortho * m_ModelView;
+
 }
 
 
@@ -104,9 +106,8 @@ void Quad::Draw()
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBindVertexArray(m_VAO);
-	glm::mat4 MVP = Ortho * m_ModelView;
 	GLuint mv_location = glGetUniformLocation(m_ShaderProgram, "mvp_matrix");
-	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( MVP));
+	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( m_MVP));
 	glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
 
 }

@@ -21,7 +21,7 @@ public:
 
 	GLuint m_ShaderProgram;
 
-	glm::mat4 m_ModelView;
+	glm::mat4 m_MVP;
 
 	void Draw();
 private:

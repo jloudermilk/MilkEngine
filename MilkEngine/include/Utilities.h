@@ -1,3 +1,7 @@
+#ifndef _UTILITIES_H_
+#define _UTILITIES_H_
+
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp" 
 #include "GLFW/glfw3.h"
@@ -37,6 +41,15 @@ struct Vertex
 	}
 };
 
+struct Transform
+{
+	glm::mat4 viewTranslate;
+	glm::mat4 viewRotateZ;
+	glm::mat4 modelScale;
+	glm::mat4 MVP;
+};
+
+
 enum PlayType
 {
 	ONCE,
@@ -50,8 +63,6 @@ enum PlayType
 };
 
 
-
-
 void Orthographic(float a_fLeft, float a_fRight, float a_fTop, float a_fBottom, float a_fNear, float a_fFar, glm::mat4 & mat);
 
 void Orthographic(float a_fWidth, float a_fHeight, float a_fNear, float a_fFar, glm::mat4 * mat);
@@ -61,3 +72,6 @@ void Perspective(float a_fUpFOV, float a_fAspectRatio, float a_fNear, float a_fF
 
 double getDeltaTime();
 void resetDeltaTime();
+
+
+#endif //_UTILITIES_H_
