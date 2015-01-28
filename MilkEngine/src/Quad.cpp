@@ -10,20 +10,23 @@ Quad::Quad()
 		"#version 330\n"
 		"layout(location = 0) in vec3 position;"
 		"layout(location = 1) in vec4 color;"
-		//"in vec2 texcoord;"
+		"layout(location = 2) in vec2 texcoord;"
 		"uniform mat4 mvp_matrix;"
 		"out vec4 vColor;"
+		"out vec2 UV;"
 		"void main() {"
 		"	vColor = color;"
+		"	UV = texcoord;"
 		"	gl_Position = mvp_matrix *( vec4 (position, 1.0));"
 		"}";
 
 	const char * FragmentShader =	// Fragment Shaders deals with pixel data
 		"#version 330\n"
 		"in vec4 vColor;"
-		//"in vec2 texcoord;"
+		"in vec2 UV;"
 		"out vec4 outColour;"
 		"void main () {"
+		"	UV;"
 		"	outColour = vColor;"
 		"}";
 
@@ -51,13 +54,6 @@ Quad::Quad()
 
 	glUseProgram(m_ShaderProgram);
 
-	// Create VAO
-	glGenVertexArrays(1, &m_VAO);
-	glBindVertexArray(m_VAO);
-
-	// Create Buffers
-	glGenBuffers(1, &m_VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 
 	GLfloat points[] =
 	{
@@ -67,7 +63,24 @@ Quad::Quad()
 		0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0
 	};
 
+	
+	
+
+	// Create Buffers
+	glGenBuffers(1, &m_VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
+	
+	
+
+
+	// Create VAO
+	glGenVertexArrays(1, &m_VAO);
+	glBindVertexArray(m_VAO);
+
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+	
 	// Specify layout of vertex data
 	GLint posAttrib = glGetAttribLocation(m_ShaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
@@ -85,13 +98,16 @@ Quad::Quad()
 	};
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 
+
 	//make an identity matrix
 	glm::mat4 m_ModelView = glm::mat4(1.0);
 
 	glm::mat4 viewTranslate = glm::translate(glm::mat4(), glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1));
 	glm::mat4 Model = glm::scale(glm::mat4(), glm::vec3(50,50, 1));
-	m_ModelView = viewTranslate * Model;
-	m_MVP = Ortho * m_ModelView;
+
+		m_MVP = Ortho * viewTranslate * Model;
+
+	
 
 }
 
@@ -103,12 +119,11 @@ Quad::~Quad()
 void Quad::Draw()
 {
 	glUseProgram(m_ShaderProgram);
-
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBindVertexArray(m_VAO);
 	GLuint mv_location = glGetUniformLocation(m_ShaderProgram, "mvp_matrix");
 	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( m_MVP));
-	glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 
 }
 

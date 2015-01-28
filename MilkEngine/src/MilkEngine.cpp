@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include "GLLog.h"
 
-#include "Quad.h"
+#include "Sprite.h"
+
 
 
 
@@ -110,12 +111,15 @@ int main()
 	*/
 
 
-	Quad * tester = new Quad();
+
 
 	//Ortho = glm::ortho(0, g_gl_width, g_gl_height, 0,-1,1);
 
 	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
 	//Ortho = glm::mat4();
+
+	Sprite * tester = new Sprite();
+	tester->LoadTexture("../resources/megamanx.png");
 	while (!glfwWindowShouldClose(window))
 	{
 
@@ -135,7 +139,7 @@ int main()
 		*/
 		
 	
-		tester->Draw();
+		tester->Update(.1f);
 
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);

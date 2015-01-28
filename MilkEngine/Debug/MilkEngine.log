@@ -1,27 +1,8 @@
-﻿Build started 1/27/2015 12:09:43 PM.
+﻿Build started 1/28/2015 11:10:53 AM.
      1>Project "C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\MilkEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D GLM_FORCE_PURE /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Sprite.cpp src\Quad.cpp src\MilkEngine.cpp src\Utilities.cpp
-         Quad.cpp
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(11): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(17): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\time.inl(86) : see declaration of 'ctime'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(24): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(106): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(113): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(117): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2059: syntax error : '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2143: syntax error : missing ';' before '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2238: unexpected token(s) preceding ';'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D GLM_FORCE_PURE /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Sprite.cpp
          Sprite.cpp
-         Generating Code...
-         Compiling...
-         MilkEngine.cpp
      1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(11): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
      1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(17): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -34,18 +15,63 @@
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
      1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\gllog.h(117): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(356) : see declaration of 'sprintf'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2059: syntax error : '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2143: syntax error : missing ';' before '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2238: unexpected token(s) preceding ';'
-         Generating Code...
-         Compiling...
-         Utilities.cpp
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2059: syntax error : '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2143: syntax error : missing ';' before '}'
-     1>c:\users\justin.loudermilk\documents\github\milkengine\milkengine\include\utilities.h(49): error C2238: unexpected token(s) preceding ';'
-         Generating Code...
-     1>Done Building Project "C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\MilkEngine.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\Debug\MilkEngine.exe" /INCREMENTAL /NOLOGO SOIL.lib opengl32.lib glfw3.lib glew32s.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\Debug\MilkEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\Debug\MilkEngine.lib" /MACHINE:X86 Debug\Sprite.obj
+         Debug\Quad.obj
+         Debug\MilkEngine.obj
+         Debug\Utilities.obj
+         SOIL.lib(SOIL.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     1>Sprite.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Generating code
+         Finished generating code
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewActiveTexture imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGenBuffers imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGenBuffers imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewAttachShader imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewAttachShader imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewCompileShader imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewCompileShader imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewCreateProgram imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewCreateProgram imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewCreateShader imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewCreateShader imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewEnableVertexAttribArray imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewEnableVertexAttribArray imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetAttribLocation imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetAttribLocation imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetProgramInfoLog imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetProgramInfoLog imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetProgramiv imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetProgramiv imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetShaderInfoLog imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetShaderInfoLog imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetShaderiv imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetShaderiv imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewLinkProgram imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewLinkProgram imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewShaderSource imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewShaderSource imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewUniform1i imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewUseProgram imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewUseProgram imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+     1>Sprite.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewUniformMatrix4fv imported
+     1>Quad.obj : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
+         MilkEngine.vcxproj -> C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\Debug\MilkEngine.exe
+     1>Done Building Project "C:\Users\justin.loudermilk\Documents\GitHub\MilkEngine\MilkEngine\MilkEngine.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.63
+Time Elapsed 00:00:01.31

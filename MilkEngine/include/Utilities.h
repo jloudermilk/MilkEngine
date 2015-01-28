@@ -41,6 +41,11 @@ struct Vertex
 	}
 };
 
+struct UV
+{
+	float U, V;
+};
+
 struct Transform
 {
 	glm::mat4 viewTranslate;
