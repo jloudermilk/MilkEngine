@@ -17,6 +17,7 @@ public:
 	glm::vec3 m_Position;
 	glm::vec3 m_Velocity;
 	glm::vec3 m_Rotation;
+	glm::vec2 m_Scale;
 	GLuint m_TexId;
 	GLuint tex_location;
 	GLuint m_UVO;
