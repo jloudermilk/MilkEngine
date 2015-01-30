@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation name = "teleport" fps = "15">
+	<frame name ="tport 0"/>
+	<frame name ="tport 1"/>
+	<frame name ="tport 2"/>
+	<frame name ="tport 3"/>
+	<frame name ="tport 4"/>
+	<frame name ="tport 5"/>
+	<frame name ="tport 6"/>
+	<frame name ="idle"/>
+</animation>
+<animation name = "idle blink" fps = "15">
+	<frame name ="idle"/>
+	<frame name ="idle 1"/>
+	<frame name ="idle 2"/>
+</animation>
+<animation name = "run" fps = "15">
+	<frame name ="run 0"/>
+	<frame name ="run 1"/>
+	<frame name ="run 2"/>
+	<frame name ="run 3"/>
+	<frame name ="run 4"/>
+	<frame name ="run 5"/>
+	<frame name ="run 6"/>
+	<frame name ="run 7"/>
+	<frame name ="run 8"/>
+	<frame name ="run 9"/>
+</animation>
+<animation name = "idle to run" fps = "15">
+	<frame name ="idle run"/>
+	<frame name ="run 0"/>
+	<frame name ="run 1"/>
+	<frame name ="run 2"/>
+	<frame name ="run 3"/>
+	<frame name ="run 4"/>
+	<frame name ="run 5"/>
+	<frame name ="run 6"/>
+	<frame name ="run 7"/>
+	<frame name ="run 8"/>
+	<frame name ="run 9"/>
+</animation>

@@ -3,6 +3,7 @@
 #include "Quad.h"
 #include "Utilities.h"
 #include "TextFileReader.h"
+#include "Animator.h"
 #include "SOIL/SOIL.h"
 
 
@@ -18,10 +19,11 @@ public:
 	glm::vec3 m_Velocity;
 	glm::vec3 m_Rotation;
 	glm::vec2 m_Scale;
+	Animator m_Animator;
 	GLuint m_TexId;
 	GLuint tex_location;
 	GLuint m_UVO;
-	UV m_UVData[4];
+	float2 m_UVData[4];
 
 
 	void Update(float a_DeltaTime);

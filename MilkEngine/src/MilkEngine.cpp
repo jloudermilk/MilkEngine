@@ -56,70 +56,13 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	/*
-	//Other stuff goes here next
-	float points[] =
-	{
-		0.0f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-	};
-	GLuint VBO = 0;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), points, GL_STATIC_DRAW);
-	GLuint VAO = 0;
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLubyte *)NULL);
-
-	glfwWindowHint(GLFW_SAMPLES, 4);
-
-
-	const char* vertex_shader =
-		"#version 400\n"
-		"in vec3 vp;"
-		"void main (){"
-		" gl_Position = vec4(vp,1.0);"
-		"}";
-	const char* fragment_shader =
-		"#version 400\n"
-		"out vec4 frag_color;"
-		"void main (){"
-		"frag_color = vec4(.5,0.0,0.5,1.0);"
-		"}";
-	// this creates a handle for my Vertex shader
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	//put the source into the shader
-	glShaderSource(vs, 1, &vertex_shader, NULL);
-	//Compile the shader
-	glCompileShader(vs);
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	//put the source into the shader
-	glShaderSource(fs, 1, &fragment_shader, NULL);
-	//Compile the shader
-	glCompileShader(fs);
-	//generate a shader container
-	GLuint shaderProgram = glCreateProgram ();
-	//attach the shader to your program
-	glAttachShader(shaderProgram, fs);
-	glAttachShader(shaderProgram, vs);
-	//"Link" the shaders together, its like a compile
-	glLinkProgram(shaderProgram);
-	*/
-
-
-
-
-	//Ortho = glm::ortho(0, g_gl_width, g_gl_height, 0,-1,1);
-
 	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
-	//Ortho = glm::mat4();
 
 	Sprite * tester = new Sprite();
-	tester->LoadTexture("../resources/megamanx.png");
+	tester->LoadTexture("../resources/MegamanXSheet.png");
+	tester->m_Animator.ImportSheet("../resources/MegamanXSheet.xml");
+	tester->m_Animator.SetAnimation("run", LOOP);
+
 	while (!glfwWindowShouldClose(window))
 	{
 
@@ -130,13 +73,7 @@ int main()
 
 		// wipe the drawing surface clean
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	/*	
-		glUseProgram(shaderProgram);
-		glBindVertexArray(VAO);
-		//draw points 0-3 from the currently bound VAO with currnet in-use shader
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		
-		*/
+
 		
 	
 		tester->Update(.1f);
@@ -144,6 +81,7 @@ int main()
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);
 		// update other events like input handling
+		resetDeltaTime();
 		glfwPollEvents();
 		if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ESCAPE)) {
 			glfwSetWindowShouldClose(window, 1);

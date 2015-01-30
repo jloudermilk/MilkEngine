@@ -41,7 +41,7 @@ struct Vertex
 	}
 };
 
-struct UV
+struct float2
 {
 	float U, V;
 };

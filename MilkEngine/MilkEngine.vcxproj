@@ -83,14 +83,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AnimatedSprite.cpp" />
+    <ClCompile Include="src\Animator.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Quad.cpp" />
     <ClCompile Include="src\MilkEngine.cpp" />
     <ClCompile Include="src\Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\AnimatedSprite.h" />
+    <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\GLLog.h" />
     <ClInclude Include="include\TextFileReader.h" />
     <ClInclude Include="include\Quad.h" />

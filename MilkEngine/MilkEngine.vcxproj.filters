@@ -30,7 +30,7 @@
     <ClCompile Include="src\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AnimatedSprite.cpp">
+    <ClCompile Include="src\Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClInclude Include="include\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\AnimatedSprite.h">
+    <ClInclude Include="include\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
