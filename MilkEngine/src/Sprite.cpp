@@ -52,10 +52,8 @@ Sprite::Sprite()
 	glEnableVertexAttribArray(texAttrib);
 	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 2 * (sizeof(float)), 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(240, 272, 1));
-
-
+	glBindVertexArray(0);
+	
 }
 Sprite::~Sprite()
 {
