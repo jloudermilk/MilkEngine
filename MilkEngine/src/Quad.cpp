@@ -121,8 +121,9 @@ Quad::~Quad()
 void Quad::Draw()
 {
 	glUseProgram(m_ShaderProgram);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBindVertexArray(m_VAO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+	
 	GLuint mv_location = glGetUniformLocation(m_ShaderProgram, "mvp_matrix");
 	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( m_MVP));
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
