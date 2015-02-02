@@ -59,6 +59,7 @@ int main()
 	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
 
 	Sprite * tester = new Sprite();
+
 	tester->LoadTexture("../resources/MegamanXSheet.png");
 	tester->m_Animator.ImportSheet("../resources/MegamanXSheet.xml");
 	tester->m_Animator.SetAnimation("run", LOOP);
@@ -81,11 +82,12 @@ int main()
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);
 		// update other events like input handling
-		resetDeltaTime();
+		
 		glfwPollEvents();
 		if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ESCAPE)) {
 			glfwSetWindowShouldClose(window, 1);
 		}
+		resetDeltaTime();
 	}
 	glfwTerminate();
 	return 0;

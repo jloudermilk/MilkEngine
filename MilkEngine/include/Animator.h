@@ -10,9 +10,9 @@
 
 struct AniSprite
 {
-			std::string Name;
-			float width, height;
-			float x0,x1,y0,y1;
+	std::string Name;
+	float width, height;
+	float x0, x1, y0, y1;
 };
 struct Atlas
 {
@@ -28,19 +28,18 @@ class Animator
 public:
 	Animator(void);
 	~Animator(void);
-	
+
 	void Update();
 	void ImportSheet(const char* a_pSpriteSheet);
-	void SetAnimation(std::string animation,PlayType type);
-	void SetAnimation(std::string animation,PlayType type, int frame);
+	void SetAnimation(std::string animation, PlayType type);
+	void SetAnimation(std::string animation, PlayType type, int frame);
 	void PlayAnimation();
 	void SetSprite();
 	void LoadSprites(const char* a_pSpriteSheet);
 	void LoadAnimations(const char* a_pAnimationSheet);
-	void Input();
 	void SetUVData(float2 * data);
-	std::map<std::string,AniSprite> mSprites;
-	std::map<std::string,frame> mAnimations;
+	std::map<std::string, AniSprite> mSprites;
+	std::map<std::string, frame> mAnimations;
 	Atlas atlas;
 
 	float2 m_UVData[2];
@@ -52,7 +51,7 @@ public:
 	PlayType currentPlayType;
 
 
-double elapsedTime =0;
+	double elapsedTime = 0;
 
 };
 
