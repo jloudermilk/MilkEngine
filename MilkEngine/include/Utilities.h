@@ -43,6 +43,12 @@ struct Vertex
 
 struct float2
 {
+	float2(){}
+	float2(float a_u, float a_v)
+	{
+		U = a_u;
+		V = a_v;
+	}
 	float U, V;
 };
 
