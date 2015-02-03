@@ -29,6 +29,8 @@ public:
 	void Update(float a_DeltaTime);
 	void Draw();
 	void LoadTexture(const char* a_pTexture);
+
+	void SetUVData();
 private:
 };
 

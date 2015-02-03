@@ -258,7 +258,7 @@ void Animator::PlayAnimation()
 void Animator::SetUVData(float2 * data)
 {
 	data[0].U = m_UVData[0].U / atlas.width;
-	data[0].V = m_UVData[0].V/ atlas.height;
+	data[0].V = m_UVData[0].V / atlas.height;
 	data[1].U = m_UVData[1].U / atlas.width;
 	data[1].V = m_UVData[0].V / atlas.height;
 	data[2].U = m_UVData[0].U / atlas.width;

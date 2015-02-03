@@ -53,10 +53,24 @@ Sprite::Sprite()
 	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 2 * (sizeof(float)), 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+	m_Position = glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1);
+	m_Scale = glm::vec2(50,50);
 	
 }
 Sprite::~Sprite()
 {
+	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(m_UVData), m_UVData, GL_STATIC_DRAW);
+
+}
+
+void Sprite::SetUVData()
+{
+	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(m_UVData), m_UVData, GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 void Sprite::Update(float a_DeltaTime)
 {
@@ -66,13 +80,13 @@ void Sprite::Update(float a_DeltaTime)
 	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(50, 50, 1));
 	m_Transform.viewRotateZ = glm::rotate(glm::mat4(), glm::vec3(0, 0, 0));
 	*/
+	/*
 	m_Animator.PlayAnimation();
 	m_Animator.SetUVData(m_UVData);
-	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_UVData), m_UVData, GL_STATIC_DRAW);
+	*/
 
-	m_Transform.viewTranslate = glm::translate(glm::mat4(), glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1));
-	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(m_Animator.m_SpriteScale.U, m_Animator.m_SpriteScale.V, 1));
+	m_Transform.viewTranslate = glm::translate(glm::mat4(), m_Position);
+	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(m_Scale,1));
 	m_Transform.MVP = Ortho * m_Transform.viewTranslate * m_Transform.modelScale;
 	m_Quad.m_MVP = m_Transform.MVP;
 

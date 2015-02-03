@@ -34,3 +34,8 @@
 # Other
 *.psess
 
+*.cd
+*.uml
+*.modelproj
+*.classdiagram
+*.layout
