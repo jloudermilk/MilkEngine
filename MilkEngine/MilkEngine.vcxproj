@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Animator.cpp" />
+    <ClCompile Include="src\FontManager.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Quad.cpp" />
     <ClCompile Include="src\MilkEngine.cpp" />
@@ -95,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animator.h" />
+    <ClInclude Include="include\FontManager.h" />
     <ClInclude Include="include\GLLog.h" />
     <ClInclude Include="include\TextFileReader.h" />
     <ClInclude Include="include\Quad.h" />
