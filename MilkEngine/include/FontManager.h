@@ -8,10 +8,10 @@
 struct Char
 {
 
-			std::string Name;
-			float width, height;
-			float x0,x1,y0,y1;
-			float offset;
+	std::string Name;
+	float width, height;
+	float x0, x1, y0, y1;
+	float offset;
 };
 
 struct Font
@@ -26,7 +26,7 @@ public:
 	static FontManager& Instance();
 
 	void LoadFont(const char * a_pFontSheet);
-	void DrawString(std::string str,float2 pos,float scale);
+	void DrawString(std::string str, float2 pos, float scale);
 private:
 	static void CleanUp();
 
@@ -36,7 +36,7 @@ private:
 
 	Sprite iSprite;
 	Font FontAtlas;
-	std::map<char,Char> charMap;
+	std::map<char, Char> charMap;
 	std::vector<Char> DrawList;
 	int CharCount;
 	float2 m_uvScale;

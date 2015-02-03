@@ -195,8 +195,11 @@ void FontManager::DrawString(std::string str,float2 pos,float scale)
 		else
 		iSprite.m_Position = glm::vec3(pos.U + c.width/2,pos.V,0.f);
 
-		iSprite.m_UVData[0] = float2(c.x0,c.y0) ;
-		iSprite.m_UVData[1] = float2(c.x1,c.y1) ;
+		iSprite.m_UVData[0] = float2(c.x0 / FontAtlas.v2Size.U, c.y0 / FontAtlas.v2Size.V);
+		iSprite.m_UVData[1] = float2(c.x1 / FontAtlas.v2Size.U, c.y0 / FontAtlas.v2Size.V);
+		iSprite.m_UVData[2] = float2(c.x0 / FontAtlas.v2Size.U, c.y1 / FontAtlas.v2Size.V);
+		iSprite.m_UVData[3] = float2(c.x1 / FontAtlas.v2Size.U, c.y1 / FontAtlas.v2Size.V);
+
 		iSprite.m_Scale = glm::vec2(c.width*scale,c.height*scale);
 
 		//Set scale of each char
