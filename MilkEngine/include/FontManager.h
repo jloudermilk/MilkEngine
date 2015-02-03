@@ -1,31 +1,22 @@
 #ifndef _FONT_MANAGER_H_
 #define _FONT_MANAGER_H_
-#include <Utilities.h>
-#include <tinyxml2.h>
-#include <Sprite.h>
+
+#include "tinyxml2/tinyxml2.h"
+#include "Sprite.h"
+#include "Utilities.h"
 
 struct Char
 {
-	union{
-		struct{
-			std::string sName;
-			Vector2 v2Size;
-			Vector4 v4Location;
-			float yOffset;
-		};
-		struct
-		{
+
 			std::string Name;
 			float width, height;
 			float x0,x1,y0,y1;
 			float offset;
-		};
-	};
 };
 
 struct Font
 {
-	Vector2 v2Size;
+	float2 v2Size;
 	std::string sSheet;
 	float fKerning;
 };
@@ -35,7 +26,7 @@ public:
 	static FontManager& Instance();
 
 	void LoadFont(const char * a_pFontSheet);
-	void DrawString(std::string str,Vector2 pos,float scale);
+	void DrawString(std::string str,float2 pos,float scale);
 private:
 	static void CleanUp();
 
@@ -48,6 +39,7 @@ private:
 	std::map<char,Char> charMap;
 	std::vector<Char> DrawList;
 	int CharCount;
+	float2 m_uvScale;
 
 	static FontManager* MInstance;
 

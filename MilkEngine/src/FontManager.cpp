@@ -67,15 +67,16 @@ void FontManager::LoadFont(const char * a_pFontSheet)
 	//currentNode = rootNode->FirstChild(); // set the current node to the root nodes first child
 	childElement = currentNode->ToElement();
 	FontAtlas.sSheet = childElement->Attribute("imagePath");
-	FontAtlas.v2Size.m_fX = (float)childElement->IntAttribute("width"); 
-	FontAtlas.v2Size.m_fY = (float)childElement->IntAttribute("height");
+	FontAtlas.v2Size.U = (float)childElement->IntAttribute("width"); 
+	FontAtlas.v2Size.V = (float)childElement->IntAttribute("height");
 	FontAtlas.fKerning = (float)childElement->IntAttribute("kerning");
 	
 	iSprite.LoadTexture(FontAtlas.sSheet.c_str());
-	iSprite.m_uvScale = FontAtlas.v2Size;
-	GLint uvAttrib = glGetAttribLocation(iSprite.m_ShaderProgram,"texcoord");
-	glEnableVertexAttribArray(uvAttrib);
-	iSprite.matrix_location = glGetUniformLocation (iSprite.m_ShaderProgram, "matrix");
+	iSprite.m_Scale.x = FontAtlas.v2Size.U;
+	iSprite.m_Scale.y = FontAtlas.v2Size.V;
+	//GLint uvAttrib = glGetAttribLocation(iSprite.m_ShaderProgram,"texcoord");
+	//glEnableVertexAttribArray(uvAttrib);
+	//iSprite.matrix_location = glGetUniformLocation (iSprite.m_ShaderProgram, "matrix");
 
 	for (childElement = currentNode->FirstChildElement(); childElement != NULL; childElement = childElement->NextSiblingElement())
 	{
@@ -170,7 +171,7 @@ void FontManager::LoadString(std::string str)
 
 
 
-void FontManager::DrawString(std::string str,Vector2 pos,float scale)
+void FontManager::DrawString(std::string str,float2 pos,float scale)
 {
 	LoadString(str);
 
@@ -183,39 +184,25 @@ void FontManager::DrawString(std::string str,Vector2 pos,float scale)
 		c = DrawList[i];
  		if(i != 0){
 			if(c.Name == "&ret"){
-			pos.m_fX -= 20;
-			newPos = pos.m_fY-4;
+			pos.V -= 20;
+			newPos = pos.U-4;
 			}
 			else{
-			newPos = iSprite.GetPosition().m_fX + c.width/2 + DrawList[i-1].width/2 + FontAtlas.fKerning;
+			newPos = iSprite.m_Position.x + c.width/2 + DrawList[i-1].width/2 + FontAtlas.fKerning;
 			}
-			iSprite.SetPosition(Vector3(newPos,pos.m_fX,0.f));
+			iSprite.m_Position = glm::vec3(newPos,pos.V,0.f);
 	}
 		else
-		iSprite.SetPosition(Vector3(pos.m_fY + c.width/2,pos.m_fX,0.f));
+		iSprite.m_Position = glm::vec3(pos.U + c.width/2,pos.V,0.f);
 
-		iSprite.m_minUVCoords = Vector2(c.x0,c.y0) ;
-		iSprite.m_maxUVCoords = Vector2(c.x1,c.y1) ;
-		iSprite.SetScale(c.width*scale,c.height*scale);
+		iSprite.m_UVData[0] = float2(c.x0,c.y0) ;
+		iSprite.m_UVData[1] = float2(c.x1,c.y1) ;
+		iSprite.m_Scale = glm::vec2(c.width*scale,c.height*scale);
 
 		//Set scale of each char
 	
 		iSprite.SetUVData();
-
-		iSprite.modelMatrix->m_afArray[0]  = iSprite.GetScale().m_fX *iSprite.m_fZoom;
-		iSprite.modelMatrix->m_afArray[5]  = iSprite.GetScale().m_fY *iSprite.m_fZoom;
-		iSprite.modelMatrix->m_afArray[12] = iSprite.GetPosition().m_fX;
-		iSprite.modelMatrix->m_afArray[13] = iSprite.GetPosition().m_fY  - (c.offset *iSprite.m_fZoom); //this is going to need to change for and use the offest variable from each char
-		iSprite.modelMatrix->m_afArray[14] = iSprite.GetPosition().m_fZ;
-
-
-	*iSprite.MVP =  (*Ortho * *iSprite.modelMatrix) ;
-
-
-
-	
-	
-	iSprite.Quad::Draw();
+		iSprite.Update(.1f);
 }
 
 }
