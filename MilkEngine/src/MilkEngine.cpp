@@ -76,7 +76,9 @@ int main()
 		// wipe the drawing surface clean
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		FontManager::Instance().DrawString("Hello, my name is Inigo Montoya.\nYou killed my father.\nPrepare to die!",float2(0, g_gl_height / 2), 1);
+		FontManager::Instance().DrawString(
+			"Hello, my name is Inigo Montoya.\nYou killed my father.\nPrepare to die!",
+			float2(0, g_gl_height / 2), 2);
 
 //		tester->Update(.1f);
 
