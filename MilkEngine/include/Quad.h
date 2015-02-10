@@ -11,19 +11,21 @@
 class Quad
 {
 public:
-	Quad();
-	~Quad();
-	GLuint m_VBO; //Vertex Buffer
-	GLuint m_EBO; //Element Buffer
-	GLuint m_VAO; //Vertex Attributes 
-	GLuint m_FragmentShader;
-	GLuint m_VertexShader;
-
-	GLuint m_ShaderProgram;
+	static Quad& Instance();
+	void Draw();
 
 	glm::mat4 m_MVP;
+	GLuint m_ShaderProgram;
+	GLuint m_VAO; //Vertex Buffer
 
-	void Draw();
 private:
+	Quad();
+	~Quad();
+	
+	GLuint m_EBO; //Element Buffer
+	GLuint m_VBO; //Vertex Attributes 
+
+	static Quad* MInstance;
+	static void CleanUp();
 };
 #endif  //QUAD
