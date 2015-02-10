@@ -13,7 +13,6 @@ public:
 	Sprite();
 	~Sprite();
 	
-	Quad m_Quad;
 	Transform m_Transform;
 	glm::vec3 m_Position;
 	glm::vec3 m_Velocity;

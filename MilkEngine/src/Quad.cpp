@@ -1,10 +1,19 @@
 #include "Quad.h"
 
 
+Quad* Quad::MInstance = 0;
+
+Quad& Quad::Instance()
+{
+	if (MInstance == 0)
+		MInstance = new Quad();
+	return *MInstance;
+}
+
 Quad::Quad()
 {
 	//Default Shaders for Default constructor
-
+	atexit(&CleanUp);
 
 	const char * VertexShader =  // Vertex Shaders deal with objects in 3D space
 		"#version 330\n"
@@ -31,13 +40,13 @@ Quad::Quad()
 		"}";
 
 	// Compile Vertex Shader
-	m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
+	GLuint m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(m_VertexShader, 1, &VertexShader, NULL);
 	glCompileShader(m_VertexShader);
 	printShaderInfoLog(m_VertexShader);
 
 	// Compile Fragment Shader
-	m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	GLuint m_FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(m_FragmentShader, 1, &FragmentShader, NULL);
 	glCompileShader(m_FragmentShader);
 	printShaderInfoLog(m_FragmentShader);
@@ -63,15 +72,15 @@ Quad::Quad()
 		0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0
 	};
 
-	
-	
+
+
 
 	// Create Buffers
 	glGenBuffers(1, &m_VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-	
-	
+
+
 
 
 	// Create VAO
@@ -80,7 +89,7 @@ Quad::Quad()
 
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	
+
 	// Specify layout of vertex data
 	GLint posAttrib = glGetAttribLocation(m_ShaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
@@ -103,13 +112,13 @@ Quad::Quad()
 
 
 	glm::mat4 viewTranslate = glm::translate(glm::mat4(), glm::vec3((float)g_gl_width / 2, (float)g_gl_height / 2, 1));
-	glm::mat4 Model = glm::scale(glm::mat4(), glm::vec3(50,50, 1));
+	glm::mat4 Model = glm::scale(glm::mat4(), glm::vec3(50, 50, 1));
 
-		m_MVP = Ortho * viewTranslate * Model;
+	m_MVP = Ortho * viewTranslate * Model;
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ARRAY_BUFFER,0);
-		glBindVertexArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 }
 
@@ -118,14 +127,20 @@ Quad::~Quad()
 {
 }
 
+void Quad::CleanUp()
+{
+	delete MInstance;
+	MInstance = 0;
+}
+
 void Quad::Draw()
 {
 	glUseProgram(m_ShaderProgram);
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
-	
+
 	GLuint mv_location = glGetUniformLocation(m_ShaderProgram, "mvp_matrix");
-	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr( m_MVP));
+	glUniformMatrix4fv(mv_location, 1, GL_FALSE, glm::value_ptr(m_MVP));
 	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, 0);
 
 }
