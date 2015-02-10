@@ -29,8 +29,8 @@ Sprite::Sprite()
 
 	glLinkProgram(ShaderProgram);
 	printProgramInfoLog(ShaderProgram);
-	m_Quad.m_ShaderProgram = ShaderProgram;
-	glUseProgram(m_Quad.m_ShaderProgram);
+	Quad::Instance().m_ShaderProgram = ShaderProgram;
+	glUseProgram(Quad::Instance().m_ShaderProgram);
 
 	m_UVData[0].U = 0.0f;
 	m_UVData[0].V = 0.0f;
@@ -41,14 +41,14 @@ Sprite::Sprite()
 	m_UVData[3].U = 1.0f;
 	m_UVData[3].V = 1.0f;
 
-	glBindVertexArray(m_Quad.m_VAO);
+	glBindVertexArray(Quad::Instance().m_VAO);
 	glGenBuffers(1, &m_UVO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(m_UVData), m_UVData, GL_STATIC_DRAW);
 
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
-	GLint texAttrib = glGetAttribLocation(m_Quad.m_ShaderProgram, "texcoord");
+	GLint texAttrib = glGetAttribLocation(Quad::Instance().m_ShaderProgram, "texcoord");
 	glEnableVertexAttribArray(texAttrib);
 	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 2 * (sizeof(float)), 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -88,7 +88,7 @@ void Sprite::Update(float a_DeltaTime)
 	m_Transform.viewTranslate = glm::translate(glm::mat4(), m_Position);
 	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(m_Scale,1));
 	m_Transform.MVP = Ortho * m_Transform.viewTranslate * m_Transform.modelScale;
-	m_Quad.m_MVP = m_Transform.MVP;
+	Quad::Instance().m_MVP = m_Transform.MVP;
 
 	Draw();
 
@@ -107,7 +107,7 @@ void Sprite::Draw()
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_TexId);
 	glUniform1i(tex_location, 0);
-	m_Quad.Draw();
+	Quad::Instance().Draw();
 }
 
 void Sprite::LoadTexture(const char* a_pTexture)
@@ -131,6 +131,6 @@ void Sprite::LoadTexture(const char* a_pTexture)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 
-	tex_location = glGetUniformLocation (m_Quad.m_ShaderProgram, "diffuseTexture");
+	tex_location = glGetUniformLocation(Quad::Instance().m_ShaderProgram, "diffuseTexture");
 
 }
