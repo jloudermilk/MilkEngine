@@ -30,6 +30,7 @@ public:
 	~Animator(void);
 
 	void Update();
+	void Initialize(float2 *UVData, glm::vec2 &Scale);
 	void ImportSheet(const char* a_pSpriteSheet);
 	void SetAnimation(std::string animation, PlayType type);
 	void SetAnimation(std::string animation, PlayType type, int frame);
@@ -42,8 +43,8 @@ public:
 	std::map<std::string, frame> mAnimations;
 	Atlas atlas;
 
-	float2 m_UVData[2];
-	float2 m_SpriteScale;
+	float2 * m_UVData;
+	glm::vec2 * m_SpriteScale;
 	std::string currentAnimation, currentSprite;
 
 	int currentFrame, loopFrame;

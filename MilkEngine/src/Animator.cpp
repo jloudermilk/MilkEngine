@@ -40,23 +40,34 @@ void Animator::SetSprite()
 {
 	if(currentAnimation == "")
 	{
-	m_UVData[0].U = mSprites["idle"].x0;
-	m_UVData[0].V = mSprites["idle"].y0;
-	m_UVData[1].U = mSprites["idle"].x1;
-	m_UVData[1].V = mSprites["idle"].y1;
-	m_SpriteScale.U = mSprites[currentSprite].width;
-	m_SpriteScale.V = mSprites[currentSprite].height;
+		m_UVData[0].U = mSprites["idle"].x0 / atlas.width;
+		m_UVData[0].V = mSprites["idle"].y0 / atlas.height;
+		m_UVData[1].U = mSprites["idle"].x1 / atlas.width;
+		m_UVData[1].V = mSprites["idle"].y0 / atlas.height;
+		m_UVData[2].U = mSprites["idle"].x0 / atlas.width;
+		m_UVData[2].V = mSprites["idle"].y1 / atlas.height;
+		m_UVData[3].U = mSprites["idle"].x1 / atlas.width;
+		m_UVData[3].V = mSprites["idle"].y1 / atlas.height;
+
+	m_SpriteScale->x = mSprites[currentSprite].width;
+	m_SpriteScale->y = mSprites[currentSprite].height;
 	}else
 	{
 		
-		m_UVData[0].U = mSprites[currentSprite].x0;
-		m_UVData[0].V = mSprites[currentSprite].y0;
-		m_UVData[1].U = mSprites[currentSprite].x1;
-		m_UVData[1].V = mSprites[currentSprite].y1;
-m_SpriteScale.U =  mSprites[currentSprite].width;
-m_SpriteScale.V = mSprites[currentSprite].height;
+		m_UVData[0].U = mSprites[currentSprite].x0 / atlas.width;
+		m_UVData[0].V = mSprites[currentSprite].y0 / atlas.height;
+		m_UVData[1].U = mSprites[currentSprite].x1 / atlas.width;
+		m_UVData[1].V = mSprites[currentSprite].y0 / atlas.height;
+		m_UVData[2].U = mSprites[currentSprite].x0 / atlas.width;
+		m_UVData[2].V = mSprites[currentSprite].y1 / atlas.height;
+		m_UVData[3].U = mSprites[currentSprite].x1 / atlas.width;
+		m_UVData[3].V = mSprites[currentSprite].y1 / atlas.height;
+
+		m_SpriteScale->x = mSprites[currentSprite].width;
+		m_SpriteScale->y = mSprites[currentSprite].height;
 
 	}
+	m_Dirty = false;
 }
 
 
@@ -256,20 +267,9 @@ void Animator::PlayAnimation()
 
 }
 
-void Animator::SetUVData(float2 * data)
-{
-	data[0].U = m_UVData[0].U / atlas.width;
-	data[0].V = m_UVData[0].V / atlas.height;
-	data[1].U = m_UVData[1].U / atlas.width;
-	data[1].V = m_UVData[0].V / atlas.height;
-	data[2].U = m_UVData[0].U / atlas.width;
-	data[2].V = m_UVData[1].V / atlas.height;
-	data[3].U = m_UVData[1].U / atlas.width;
-	data[3].V = m_UVData[1].V / atlas.height;
-	
 
-}
-void Animator::Update()
+void Animator::Initialize(float2 *a_UVData, glm::vec2 &a_Scale)
 {
-	PlayAnimation();
+	m_UVData = a_UVData;
+	m_SpriteScale = &a_Scale;
 }

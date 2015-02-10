@@ -62,6 +62,7 @@ int main()
 	Sprite * tester = new Sprite();
 
 	tester->LoadTexture("../resources/MegamanXSheet.png");
+	tester->m_Animator.Initialize(tester->m_UVData, tester->m_Scale);
 	tester->m_Animator.ImportSheet("../resources/MegamanXSheet.xml");
 	tester->m_Animator.SetAnimation("run", LOOP);
 
@@ -79,6 +80,7 @@ int main()
 	//	FontManager::Instance().DrawString("Hello, my name is Inigo Montoya.\nYou killed my father.\nPrepare to die!",float2(0, g_gl_height / 2), 2);
 
 		tester->Update(.1f);
+		tester->m_Animator.PlayAnimation();
 
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);

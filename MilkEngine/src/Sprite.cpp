@@ -60,6 +60,7 @@ Sprite::Sprite()
 }
 Sprite::~Sprite()
 {
+	
 	glBindBuffer(GL_ARRAY_BUFFER, m_UVO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(m_UVData), m_UVData, GL_STATIC_DRAW);
 
@@ -81,24 +82,13 @@ void Sprite::Update(float a_DeltaTime)
 	m_Transform.viewRotateZ = glm::rotate(glm::mat4(), glm::vec3(0, 0, 0));
 	*/
 	
-
-	m_Animator.PlayAnimation();
-	
-	if (m_Animator.m_Dirty)
-	{
-		m_Animator.SetUVData(m_UVData);
-		m_Scale.x = m_Animator.m_SpriteScale.U;
-		m_Scale.y = m_Animator.m_SpriteScale.V;
-		SetUVData();
-		m_Animator.m_Dirty = false;
-	}
-	
+		
 
 	m_Transform.viewTranslate = glm::translate(glm::mat4(), m_Position);
 	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(m_Scale,1));
 	m_Transform.MVP = Ortho * m_Transform.viewTranslate * m_Transform.modelScale;
 	Quad::Instance().m_MVP = m_Transform.MVP;
-
+	SetUVData();
 	Draw();
 
 }
