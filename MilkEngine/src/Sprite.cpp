@@ -80,10 +80,19 @@ void Sprite::Update(float a_DeltaTime)
 	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(50, 50, 1));
 	m_Transform.viewRotateZ = glm::rotate(glm::mat4(), glm::vec3(0, 0, 0));
 	*/
-	/*
+	
+
 	m_Animator.PlayAnimation();
-	m_Animator.SetUVData(m_UVData);
-	*/
+	
+	if (m_Animator.m_Dirty)
+	{
+		m_Animator.SetUVData(m_UVData);
+		m_Scale.x = m_Animator.m_SpriteScale.U;
+		m_Scale.y = m_Animator.m_SpriteScale.V;
+		SetUVData();
+		m_Animator.m_Dirty = false;
+	}
+	
 
 	m_Transform.viewTranslate = glm::translate(glm::mat4(), m_Position);
 	m_Transform.modelScale = glm::scale(glm::mat4(), glm::vec3(m_Scale,1));

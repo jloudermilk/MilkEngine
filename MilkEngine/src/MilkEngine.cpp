@@ -59,11 +59,11 @@ int main()
 
 	Orthographic(0.f, (float)g_gl_width, (float)g_gl_height, 0.f, -1.f, 1.f, Ortho);
 	FontManager::Instance().LoadFont("../resources/NESish.xml");
-//	Sprite * tester = new Sprite();
+	Sprite * tester = new Sprite();
 
-//	tester->LoadTexture("../resources/MegamanXSheet.png");
-//	tester->m_Animator.ImportSheet("../resources/MegamanXSheet.xml");
-//	tester->m_Animator.SetAnimation("run", LOOP);
+	tester->LoadTexture("../resources/MegamanXSheet.png");
+	tester->m_Animator.ImportSheet("../resources/MegamanXSheet.xml");
+	tester->m_Animator.SetAnimation("run", LOOP);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -76,11 +76,9 @@ int main()
 		// wipe the drawing surface clean
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		FontManager::Instance().DrawString(
-			"Hello, my name is Inigo Montoya.\nYou killed my father.\nPrepare to die!",
-			float2(0, g_gl_height / 2), 2);
+	//	FontManager::Instance().DrawString("Hello, my name is Inigo Montoya.\nYou killed my father.\nPrepare to die!",float2(0, g_gl_height / 2), 2);
 
-//		tester->Update(.1f);
+		tester->Update(.1f);
 
 		// put the stuff we've been drawing onto the display
 		glfwSwapBuffers(window);

@@ -52,6 +52,7 @@ public:
 
 
 	double elapsedTime = 0;
+	bool m_Dirty = false;
 
 };
 

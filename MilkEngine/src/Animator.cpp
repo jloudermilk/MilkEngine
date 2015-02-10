@@ -210,6 +210,7 @@ void Animator::PlayAnimation()
 	
 	if(elapsedTime > m_dFrames){
 		elapsedTime = 0;
+		m_Dirty = true;
 	switch (currentPlayType){
 	case ONCE:
 		if(mAnimations.at(currentAnimation)[currentFrame] != mAnimations.at(currentAnimation).back())
@@ -265,13 +266,10 @@ void Animator::SetUVData(float2 * data)
 	data[2].V = m_UVData[1].V / atlas.height;
 	data[3].U = m_UVData[1].U / atlas.width;
 	data[3].V = m_UVData[1].V / atlas.height;
+	
 
 }
 void Animator::Update()
 {
-	
-
 	PlayAnimation();
-
-
 }
